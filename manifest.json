@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "analog-clock",
+  "version": "1.0",
+  "description": "Correct Time",
+  "icons": {
+    "128": "/static/images/red-clock.png",
+    "48": "/static/images/clock-icon.png"
+  },
+  "chrome_url_overrides": {
+    "pageToOverride": "https:www.google.co.za",
+    "newtab": "clock.html"
+  },
+  "browser_action": {
+    "default_icon": {
+      "128": "/static/images/red-clock.png",
+      "48": "/static/images/clock-icon.png"
+    },
+    "default_popup": "clock.html"
+  },
+  "background": {
+    "page": "clock.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "html": ["clock.html"],
+      "css": ["main.css"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

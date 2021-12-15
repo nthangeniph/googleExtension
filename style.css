@@ -1,0 +1,187 @@
+html {
+  background: url(static/images/dev-background.png);
+  background-size: cover;
+  font-family: "helvetica neue";
+  text-align: center;
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock {
+  width: 22rem;
+  height: 22rem;
+  /* border: 2px solid whitesmoke; */
+  border-radius: 50%;
+  margin: 10px auto;
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  padding: 2rem;
+  /*box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2); */
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px); /* account for the height of the clock hands */
+}
+
+.hand {
+  width: 50%;
+  height: 6px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.05s;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+.current-time {
+  position: relative;
+  display: flex;
+  z-index: -1;
+  justify-content: center;
+  align-items: center;
+  inset: 50% 0 0 55%;
+  width: 90px;
+  height: 30px;
+  background-color: whitesmoke;
+  box-shadow: inset 5px 5px 5px #631111;
+  outline: none;
+}
+.second-hand {
+  height: 3px;
+  background-color: rgb(197, 124, 35);
+}
+.min-hand {
+  position: relative;
+  background-color: antiquewhite;
+  top: 50%;
+  left: 15%;
+  height: 4px;
+  width: 35%;
+}
+.hour-hand {
+  background-color: antiquewhite;
+}
+.numbers {
+  position: relative;
+  top: -270px;
+  left: -3.5%;
+  display: flex;
+  width: 26rem;
+  height: 26rem;
+  border-radius: 50%;
+}
+.readings {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 45%;
+  height: 15px;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0%;
+  color: white;
+}
+.number {
+  background: transparent;
+  position: relative;
+  width: 98%;
+  height: 6px;
+}
+.search-input {
+  position: relative;
+  top: 45rem;
+  left: -35%;
+  width: 40rem;
+  height: 4rem;
+}
+.input-value {
+  width: 40rem;
+  height: 100%;
+}
+
+.one {
+  transform: rotate(300deg);
+}
+.two {
+  transform: rotate(330deg);
+}
+.three {
+  transform: rotate(3600deg);
+}
+.four {
+  transform: rotate(30deg);
+}
+.five {
+  transform: rotate(60deg);
+}
+.six {
+  transform: rotate(90deg);
+}
+.seven {
+  transform: rotate(120deg);
+}
+.eight {
+  transform: rotate(150deg);
+}
+.nine {
+  transform: rotate(180deg);
+}
+.ten {
+  transform: rotate(210deg);
+}
+.eleven {
+  transform: rotate(240deg);
+}
+.twelve {
+  transform: rotate(270deg);
+}
+.number-one {
+  transform: rotate(-300deg);
+}
+.number-two {
+  transform: rotate(-330deg);
+}
+.number-three {
+  transform: rotate(-360deg);
+}
+.number-four {
+  transform: rotate(-30deg);
+}
+.number-five {
+  transform: rotate(-60deg);
+}
+.number-six {
+  transform: rotate(-90deg);
+}
+.number-seven {
+  transform: rotate(-120deg);
+}
+.number-eight {
+  transform: rotate(-150deg);
+}
+.number-nine {
+  transform: rotate(-180deg);
+}
+.number-ten {
+  transform: rotate(-210deg);
+}
+.number-eleven {
+  transform: rotate(-240deg);
+}
+.number-twelve {
+  transform: rotate(-270deg);
+}
