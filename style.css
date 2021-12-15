@@ -76,9 +76,9 @@ body {
   background-color: antiquewhite;
 }
 .numbers {
-  position: relative;
-  top: -270px;
-  left: -3.5%;
+  position: absolute;
+  top: 10%;
+  left: 40%;
   display: flex;
   width: 26rem;
   height: 26rem;
