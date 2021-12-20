@@ -5,6 +5,9 @@ const hour = document.querySelector(".hours");
 const minute = document.querySelector(".minutes");
 const second = document.querySelector(".seconds");
 const searchInput = document.querySelector(".input-value");
+const dropDwn = document.querySelector(".found-container");
+
+var completelist = document.getElementById("myDropdown");
 
 function setDate() {
   const now = new Date();
@@ -28,9 +31,8 @@ setInterval(setDate, 1000);
 setDate();
 
 function addelement(nextLink) {
-  var completelist = document.getElementById("myDropdown");
   const url = nextLink.replaceAll(" ", "+");
-  completelist.innerHTML +=
+  completelist.innerHTML =
     "<div class='found-container'>" +
     `<a href='https://www.google.com/search?q=${url}'>` +
     `<img class='search-item-image' src='static/images/searchIcon.jpeg' />` +
@@ -51,13 +53,15 @@ async function getRandomPicture(value) {
   }
 }
 
-// searchInput.setAttribute("onchange", getRandomPicture());
-searchInput.addEventListener("onkeydown", function() {
-  console.log("hvh");
-});
-// searchInput.onchange = function(e) {
-//   console.log(e);
-// };
-function myFunction() {
-  getRandomPicture(searchInput?.value);
+var currentValue = null;
+
+function myFunction(e) {
+  if (searchInput?.value.length > 2) {
+    addelement(searchInput?.value);
+  } else if (searchInput?.value?.length == 0 && currentValue == 1) {
+    completelist.innerHTML = null;
+  }
+
+  currentValue = searchInput?.value?.length;
+  console.log("div", e);
 }
