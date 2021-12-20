@@ -103,16 +103,50 @@ body {
 }
 .search-input {
   position: relative;
-  top: 45rem;
-  left: -35%;
+  top: 40rem;
+  left: -30%;
   width: 40rem;
   height: 4rem;
 }
 .input-value {
   width: 40rem;
   height: 100%;
+  border-radius: 20px;
+}
+i {
+  position: absolute;
+  top: 19%;
+  left: 90%;
+}
+.dropdown-content {
+  width: 40rem;
+  height: auto;
+  border-radius: 10px;
+}
+.search-item {
+  display: block;
+  margin: 7px 0px;
+}
+.found-container {
+  display: flex;
+  background-color: lightgray;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 2%;
+  margin-top: 4%;
+  border-radius: 15px;
 }
 
+.search-item-image {
+  margin-right: 10px;
+  height: 35px;
+  width: 35px;
+  border-radius: 15px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
 .one {
   transform: rotate(300deg);
 }
