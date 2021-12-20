@@ -136,17 +136,22 @@ i {
   margin-top: 4%;
   border-radius: 15px;
 }
-
+a {
+  display: inline-flex;
+  text-decoration: none;
+  color: rgb(150, 21, 21);
+}
 .search-item-image {
   margin-right: 10px;
   height: 35px;
   width: 35px;
   border-radius: 15px;
 }
-a {
-  text-decoration: none;
-  color: black;
+span {
+  margin-top: 4px;
+  margin-bottom: 2px;
 }
+
 .one {
   transform: rotate(300deg);
 }

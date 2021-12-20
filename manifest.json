@@ -25,7 +25,7 @@
     {
       "matches": ["<all_urls>"],
       "html": ["clock.html"],
-      "css": ["main.css"]
+      "css": ["style.css"]
     }
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"

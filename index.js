@@ -36,7 +36,7 @@ function addelement(nextLink) {
     "<div class='found-container'>" +
     `<a href='https://www.google.com/search?q=${url}'>` +
     `<img class='search-item-image' src='static/images/searchIcon.jpeg' />` +
-    `${nextLink.length < 30 ? nextLink : nextLink.substring(0, 30) + "..."}` +
+    `<span>${nextLink.length < 30 ? nextLink : nextLink.substring(0, 30) + "..."}</span>` +
     `</a>`;
   ("</div>");
 }
@@ -55,13 +55,16 @@ async function getRandomPicture(value) {
 
 var currentValue = null;
 
-function myFunction(e) {
-  if (searchInput?.value.length > 2) {
-    addelement(searchInput?.value);
-  } else if (searchInput?.value?.length == 0 && currentValue == 1) {
-    completelist.innerHTML = null;
+function myFunction() {
+  if (currentValue != searchInput?.value) {
+    if (searchInput?.value.length > 2) {
+      addelement(searchInput?.value);
+    } else if (searchInput?.value?.length == 0) {
+      completelist.innerHTML = null;
+    }
   }
 
   currentValue = searchInput?.value?.length;
-  console.log("div", e);
 }
+
+setInterval(myFunction, 500);
