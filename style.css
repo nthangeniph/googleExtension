@@ -136,7 +136,7 @@ i {
   margin-top: 4%;
   border-radius: 15px;
 }
-a {
+.a-linker {
   display: inline-flex;
   text-decoration: none;
   color: rgb(48, 45, 45);
@@ -147,7 +147,7 @@ a {
   width: 35px;
   border-radius: 15px;
 }
-span {
+.link-text {
   margin-top: 4px;
   margin-bottom: 2px;
 }
@@ -223,4 +223,37 @@ span {
 }
 .number-twelve {
   transform: rotate(-270deg);
+}
+.todo-list {
+  position: absolute;
+  background: url(static/images/todoBackgrnd.png);
+  background-size: cover;
+  height: 550px;
+  width: 500px;
+  left: 130%;
+  top: -50px;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+}
+.add-task-input {
+  width: 250px;
+  height: 30px;
+  border-radius: 8px;
+}
+.add-task-button {
+  width: 50px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: rgb(26, 138, 100);
+  cursor: pointer;
+}
+.sign-in_button {
+  height: 35px;
+  color: aliceblue;
+  background-color: rgb(8, 59, 59);
+}
+.sign-in_button a {
+  text-decoration: none;
+  color: white;
 }

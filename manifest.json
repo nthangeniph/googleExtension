@@ -23,10 +23,19 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://*.google.com/*"],
+      "matches": ["https://*.google.co.za/*"],
       "html": ["clock.html"],
       "css": ["style.css"]
     }
+  ],
+  "permissions": [
+    "identity",
+    "identity.email",
+    "https://www.googleapis.com/",
+    "https://accounts.google.com/",
+    "https://*.googleusercontent.com/",
+    "https://*.chromiumapp.org/*",
+    "https://accounts.google.com/o/oauth2/v2/auth"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

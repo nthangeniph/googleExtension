@@ -92,20 +92,40 @@
        </div>
        <div class="number-twelve reverse">12</div>
       </div>
-
+     
       <section class="search-input">
         <i class="fa fa-search icon"></i>
           <input class="input-value"  type="search" placeholder="PH Search"/>
    
-    <div id="myDropdown" class="dropdown-content">
- 
-    
+       <div id="myDropdown" class="dropdown-content">
     </div>
   </section>
-    <script src='./index.js'  type="text/javascript" >
-   
+  <section class="todo-list">
+    <h1 style="text-decoration: underline; margin-top: 30px;">TODAY'S MUST</h1>
+    <form>
+      <div>
+        <input class="add-task-input" type="text" name='task' placeholder="add new task....."/>
+        <input class="add-task-button" type="submit" value="Add"></input>
+          <button class="sign-in_button"> 
+            <a href="https://accounts.google.com/ServiceLogin/signinchooser?hl=en&passive=true&continue=https%3A%2F%2Fwww.google.com%2F&ec=GAZAmgQ&flowName=GlifWebSignIn&flowEntry=ServiceLogin">
+              Sign in
+              </a>
+          </button>
+       
+      </div>
     
+    </form>
+    
+
+  </section>
+
+    <script src="./apis/firebase.js" type="module/text/javascript">
+      
+      
     </script>
  
+    <script src='./index.js'  type="text/javascript" >
+    
+    </script>
 </body>
 </html>

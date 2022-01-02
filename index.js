@@ -6,6 +6,9 @@ const minute = document.querySelector(".minutes");
 const second = document.querySelector(".seconds");
 const searchInput = document.querySelector(".input-value");
 const dropDwn = document.querySelector(".found-container");
+const addButton = document.querySelector(".add-task-button");
+const addInput = document.querySelector(".add-task-input");
+const signInButton = document.querySelector(".sign-in_button");
 
 var completelist = document.getElementById("myDropdown");
 
@@ -30,13 +33,22 @@ function setDate() {
 setInterval(setDate, 1000);
 setDate();
 
+window.addEventListener("load", (event) => {
+  chrome.identity.getProfileUserInfo(function(userInfo) {
+    if (userInfo?.email) {
+      signInButton.style.display = "none";
+    } else {
+      addButton.style.display = "none";
+    }
+  });
+});
 function addelement(nextLink) {
   const url = nextLink.replaceAll(" ", "+");
   completelist.innerHTML =
     "<div class='found-container'>" +
-    `<a href='https://www.google.com/search?q=${url}'>` +
+    `<a class='a-linker' href='https://www.google.com/search?q=${url}'>` +
     `<img class='search-item-image' src='static/images/searchIcon.jpeg' />` +
-    `<span>${nextLink.length < 30 ? nextLink : nextLink.substring(0, 30) + "..."}</span>` +
+    `<span class='link-text'>${nextLink.length < 30 ? nextLink : nextLink.substring(0, 30) + "..."}</span>` +
     `</a>`;
   ("</div>");
 }
@@ -66,5 +78,4 @@ function myFunction() {
 
   currentValue = searchInput?.value?.length;
 }
-
 setInterval(myFunction, 500);
