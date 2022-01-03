@@ -9,6 +9,7 @@ const dropDwn = document.querySelector(".found-container");
 const addButton = document.querySelector(".add-task-button");
 const addInput = document.querySelector(".add-task-input");
 const signInButton = document.querySelector(".sign-in_button");
+const primaryColorSet = document.querySelector(".settings input");
 
 var completelist = document.getElementById("myDropdown");
 
@@ -78,4 +79,8 @@ function myFunction() {
 
   currentValue = searchInput?.value?.length;
 }
+//demostaration of css variable use
+primaryColorSet.addEventListener("change", () => {
+  document.documentElement.style.setProperty(`--${primaryColorSet.name}`, primaryColorSet.value);
+});
 setInterval(myFunction, 500);

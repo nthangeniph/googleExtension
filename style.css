@@ -1,3 +1,6 @@
+:root {
+  --base-color: black;
+}
 html {
   background: url(static/images/dev-background.png);
   background-size: cover;
@@ -14,6 +17,7 @@ body {
   min-height: 100vh;
   justify-content: center;
   align-items: center;
+  color: var(--base-color);
 }
 
 .clock {
@@ -139,7 +143,7 @@ i {
 .a-linker {
   display: inline-flex;
   text-decoration: none;
-  color: rgb(48, 45, 45);
+  color: var(--base-color);
 }
 .search-item-image {
   margin-right: 10px;
@@ -256,4 +260,8 @@ i {
 .sign-in_button a {
   text-decoration: none;
   color: white;
+}
+.settings {
+  position: absolute;
+  bottom: 0px;
 }
