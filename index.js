@@ -34,6 +34,9 @@ function setDate() {
 setInterval(setDate, 1000);
 setDate();
 
+let primaryColor = localStorage.getItem("primary-key");
+console.log("primaryColor", primaryColor);
+document.documentElement.style.setProperty(`--base-color`, primaryColor);
 window.addEventListener("load", (event) => {
   chrome.identity.getProfileUserInfo(function(userInfo) {
     if (userInfo?.email) {
@@ -81,6 +84,7 @@ function myFunction() {
 }
 //demostaration of css variable use
 primaryColorSet.addEventListener("change", () => {
+  localStorage.setItem("primary-key", primaryColorSet.value);
   document.documentElement.style.setProperty(`--${primaryColorSet.name}`, primaryColorSet.value);
 });
 setInterval(myFunction, 500);
