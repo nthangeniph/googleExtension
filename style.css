@@ -228,6 +228,10 @@ i {
 .number-twelve {
   transform: rotate(-270deg);
 }
+
+.primary-color-set {
+  display: none;
+}
 .todo-list {
   position: absolute;
   background: url(static/images/todoBackgrnd.png);
@@ -239,6 +243,91 @@ i {
   object-fit: cover;
   background-repeat: no-repeat;
   opacity: 0.85;
+}
+.todo-list {
+  background: none;
+}
+.weather-form {
+  height: 550px;
+  width: 500px;
+  font-family: "Open Sans", sans-serif;
+}
+.search-weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5em;
+  margin-top: 25px;
+}
+.search-bar {
+  width: 58%;
+  height: 37px;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5em;
+  background: #000000d0;
+  color: white;
+  font-family: inherit;
+  font-size: 120%;
+}
+.search-weather-button {
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: #000000d0;
+  color: white;
+  font-size: 20px;
+  padding: 0.4em;
+  transition: 0.2s ease-in-out;
+}
+.search-weather-button:hover {
+  cursor: pointer;
+  background-color: beige;
+  color: black;
+}
+.weather-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weather-details {
+  background-color: rgba(77, 125, 141, 0.7);
+  width: 65%;
+  padding: 0.8em;
+  border-radius: 35px;
+  margin: 1em auto;
+  transition: filter 0.7s;
+}
+.large {
+  filter: blur(10px);
+}
+.video-background {
+  height: inherit;
+  width: 500px;
+  position: relative;
+  top: -380px;
+  z-index: -1;
+}
+.image-background {
+  height: inherit;
+  width: 500px;
+  position: relative;
+  top: -770px;
+  margin-top: 10px;
+  z-index: -1;
+}
+
+.img-background {
+  height: 900px;
+  width: 500px;
+  object-fit: cover;
+}
+video {
+  height: 100%;
+  width: 500px;
+  opacity: 0.3;
+  object-fit: cover;
 }
 .add-task-input {
   width: 250px;
@@ -264,4 +353,15 @@ i {
 .settings {
   position: absolute;
   bottom: 0px;
+}
+.todo-list-form {
+  display: none;
+}
+.weather-todo {
+  display: flex;
+  width: 550px;
+}
+.weather-button {
+  margin-left: calc(100% - 25%);
+  margin-bottom: 10px;
 }

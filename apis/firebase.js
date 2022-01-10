@@ -1,7 +1,17 @@
 import { initializeApp } from "firebase/app";
 import firestore from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
+// const http = require("http");
+// const port = 3000;
+// const server = http.createServer(function(req, res) {});
 
+// server.listen(port, function(error) {
+//   if (error) {
+//     console.log("Something went wrong", error);
+//   } else {
+//     console.log("Server is listening to " + port);
+//   }
+// });
 const firebaseConfig = {
   apiKey: "AIzaSyAMzCakkHEDR1hQ3HxNJRXNmsd5KFHOXwc",
   authDomain: "phextension-1639555609925.firebaseapp.com",
@@ -99,3 +109,16 @@ addButton.addEventListener("click", () => {
 });
 console.log("addButton");
 export { addNewTask, updateTasks, updateSpecificTask, getListOfTodos };
+
+{
+  /* <div class="settings">
+<div class="primary-color-set" > 
+  <label>set primary color:</label>
+  <input type="color" class="primary-color" name="base-color"> 
+</div>
+<div class="weather-todo">
+<button class="weather-button">
+  Weather
+</button>
+</div> */
+}
