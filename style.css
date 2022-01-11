@@ -232,7 +232,8 @@ i {
 .primary-color-set {
   display: none;
 }
-.todo-list {
+
+.todo-list-form {
   position: absolute;
   background: url(static/images/todoBackgrnd.png);
   background-size: cover;
@@ -244,13 +245,24 @@ i {
   background-repeat: no-repeat;
   opacity: 0.85;
 }
-.todo-list {
-  background: none;
+.daily-quote {
+  position: relative;
+  top: -35px;
+  font-family: "Island Moments", cursive;
+  font-size: 17px;
+}
+.add-buttons {
+  position: relative;
+  top: -45px;
 }
 .weather-form {
   height: 550px;
   width: 500px;
+  position: absolute;
+  left: 130%;
+  top: -50px;
   font-family: "Open Sans", sans-serif;
+  font-size: 24px;
 }
 .search-weather {
   display: flex;
@@ -306,21 +318,22 @@ i {
   height: inherit;
   width: 500px;
   position: relative;
-  top: -380px;
+  top: -520px;
   z-index: -1;
 }
 .image-background {
   height: inherit;
   width: 500px;
   position: relative;
-  top: -770px;
+  top: -550px;
   margin-top: 10px;
   z-index: -1;
 }
 
 .img-background {
-  height: 900px;
+  height: 550px;
   width: 500px;
+  opacity: 0.5;
   object-fit: cover;
 }
 video {
@@ -364,4 +377,35 @@ video {
 .weather-button {
   margin-left: calc(100% - 25%);
   margin-bottom: 10px;
+}
+.future-update {
+  display: flex;
+  justify-content: space-around;
+}
+.time-slot {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1450px) {
+  .todo-list {
+    margin-left: 40px;
+  }
+  .img-background {
+    height: 550px;
+  }
+}
+@media (min-width: 1770px) {
+  .todo-list-form {
+    left: 180%;
+  }
+  .weather-form {
+    left: 180%;
+  }
+  .img-background {
+    height: 700px;
+  }
+  .video-background {
+    height: 700px;
+  }
 }

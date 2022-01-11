@@ -10,32 +10,51 @@ const signInButton = document.querySelector(".sign-in_button");
 const primaryColorSet = document.querySelector(".settings input");
 const toggleButton = document.querySelector(".weather-todo");
 const toggleButtonLarge = document.querySelector(".weather-details");
-var completelist = document.getElementById("myDropdown");
+const timeSlots = document.querySelectorAll(".time-occur");
+const iconsHourly = document.querySelectorAll(".current-icon");
+const tempsHourly = document.querySelectorAll(".degree");
+const completelist = document.getElementById("myDropdown");
+const todoListSection = document.querySelector(".todo-list-form");
+const weatherSection = document.querySelector(".weather-form");
 
 toggleButtonLarge.classList.toggle("large");
-
+let windSpeed = "";
+let cityName = "";
+getLocation();
 let weather = {
   apiKey: "4e5e5bc91ba050830ec3e6a084cd31fb",
   fetchWeather: function(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&&units=metric&&appid=${this.apiKey}`)
       .then((response) => response.json())
-      .then((data) => this.displayWeather(data));
-  },
-  fetchWeatherWithCoordinates: function(lon, lat) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`)
-      .then((response) => response.json())
-      .then((data) => this.displayWeather(data))
-      .catch(() => {
-        this?.fetchWeather("johannesburg");
+      .then((data) => {
+        cityName = data?.name;
+        windSpeed = data?.wind?.speed;
+        this.fetchWeatherWithCoordinates(data?.coord?.lon, data?.coord?.lat);
       });
   },
-  displayWeather: function(data) {
-    const { name } = data;
-    const { icon, description } = data?.weather[0];
-    const { temp, humidity } = data?.main;
-    const { speed } = data?.wind;
+  initialFetchWeather: function(lon, lat) {
+    fetch(`https:/api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`)
+      .then((response) => response.json())
+      .then((data) => {
+        cityName = data?.name;
+        windSpeed = data?.wind?.speed;
+        this.fetchWeatherWithCoordinates(data?.coord?.lon, data?.coord?.lat);
+      });
+  },
+  fetchWeatherWithCoordinates: function(lon, lat) {
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`)
+      .then((response) => response.json())
+      .then((data) => this.displayWeather(data))
+      .catch((error) => {
+        // if (error?.message) this?.fetchWeather("johannesburg");
+      });
+  },
 
-    const isRaining = description.split(" ").includes("rain") || description.split(" ").includes("thunderstorm");
+  displayWeather: function(data) {
+    const { icon, description } = data?.hourly[0]?.weather[0];
+    const { temp, humidity } = data?.hourly[0];
+
+    let isRaining = description.split(" ").includes("rain") || description.split(" ").includes("thunderstorm");
 
     {
       isRaining
@@ -47,20 +66,32 @@ let weather = {
         ? (document.querySelector(".img-background").src = `static/images/${getWeatherImg(description)}`)
         : null;
     }
-    document.querySelector(".city").innerHTML = `Weather in ${name}`;
+
+    document.querySelector(".city").innerHTML = `Weather in ${cityName}`;
     document.querySelector(".weather-icon").src = `https://openweathermap.org/img/wn/${icon}.png`;
-    document.querySelector(".temp").innerHTML = `${temp}°C`;
-    document.querySelector(".description").innerHTML = description;
+    document.querySelector(".temp").innerHTML = `${Math.floor(temp)}°C`;
     document.querySelector(".humidity").innerHTML = `Humidity: ${humidity}%`;
-    document.querySelector(".wind").innerHTML = `Wind-speed: ${speed} km/h`;
+    document.querySelector(".wind").innerHTML = `Wind-speed: ${windSpeed} km/h`;
+
+    timeSlots.forEach((item, index) => {
+      let time = toDateTime(data?.hourly[index + 3].dt).getHours();
+      let slot = Number(time) < 9 ? `0${time}` : time;
+      item.innerHTML = `${slot}:00`;
+    });
+    iconsHourly.forEach((item, index) => {
+      let currentIcon = data?.hourly[index + 3]?.weather[0].icon;
+      item.src = `https://openweathermap.org/img/wn/${currentIcon}.png`;
+    });
+    tempsHourly.forEach((item, index) => {
+      item.innerHTML = `${(data?.hourly[index + 3]?.temp).toFixed(1)} °C`;
+    });
+
     toggleButtonLarge.classList.toggle("large");
   },
   search: function() {
     this.fetchWeather();
-    this.fetchWeather();
   },
 };
-
 function setDate() {
   const now = new Date();
 
@@ -96,6 +127,15 @@ window.addEventListener("load", (event) => {
   });
   // document.querySelector(".primary-color").value = primaryColor;
 });
+document.addEventListener("keydown", (event) => {
+  if (event?.shiftKey && event.key == "W") {
+    todoListSection.style.display = "none";
+    weatherSection.style.display = "block";
+  } else if (event?.shiftKey && event.key == "T") {
+    todoListSection.style.display = "block";
+    weatherSection.style.display = "none";
+  }
+});
 
 function addelement(nextLink) {
   const url = nextLink.replaceAll(" ", "+");
@@ -113,7 +153,6 @@ var currentValue = null;
 function myFunction() {
   if (currentValue != searchInput?.value) {
     if (searchInput?.value.length > 2) {
-      debugger;
       addelement(searchInput?.value);
     } else if (searchInput?.value?.length == 0) {
       completelist.innerHTML = null;
@@ -167,7 +206,11 @@ document.querySelector(".search-weather-button").addEventListener("click", () =>
 function getLocation() {
   navigator.geolocation.getCurrentPosition((position) => {
     const { latitude, longitude } = position?.coords;
-    weather?.fetchWeatherWithCoordinates(longitude, latitude);
+    weather?.initialFetchWeather(longitude, latitude);
   });
 }
-getLocation();
+function toDateTime(secs) {
+  var t = new Date(1970, 0, 1); // Epoch
+  t.setSeconds(secs);
+  return t;
+}
